@@ -1,17 +1,19 @@
 require 'rspec'
-require './lib/node'
+require "./lib/node"
 
 RSpec.describe Node do
-    it "has data" do
-      node = Node.new("plop", nil)
-  
-      expect(node.data).to eq("plop")
-    end
+        it "exists" do
+          node = Node.new("plop")
+      
+          expect(node.data).to eq("plop")
+        end
 
-    it "shows nil" do
-      node = Node.new("plop", nil)
+        it "returns next_node nil" do
+            node = Node.new("plop")
 
-      expect(node.next_node).to eq(nil)
-    end
+            expect(node.next_node).to eq (nil)
+        end
 
+
+        
 end
