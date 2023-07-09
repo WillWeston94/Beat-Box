@@ -36,19 +36,63 @@ class LinkedList
         counter
     end
 
-
-    
-    def find(data)
-        node = @head
-        while(!node.next_node.nil?)
-            if(node.data == data)
-                return true
-            end
-            #escape while loop to reiterate and check all nodes not just the first node if the line below is not there it will infinite loop true 
-            node = node.next_node 
+    def to_string
+        current = @head
+        elements = []
+        while current
+            elements << current.data
+            current = current.next_node
         end
-        false
+        elements.join('  ')
     end
+    
+    def prepend(data)
+        if @head.nil?
+            @head = Node.new(data)
+        else
+            current = Node.new(data)
+            current.next_node = @head
+            @head = current
+        end
+    end
+ 
+    def find(position, data)
+        if position < 0 || data.nil? || head.nil?
+            return nil 
+        end
+
+        found = ""
+        current = @head
+        count = 0
+
+        while count < (position + data)
+            if count == position 
+                found << current.data
+            end
+            current = current.next_node
+            count += 1
+        end
+
+        found
+    end
+
+    # def find(first_position, number)
+    #     result = []
+    #     current = @head # Current position
+    #     position = 0 # start of List
+    #         while current && position < first_position + number
+    #             if position >= start_position
+    #                 result << current.data
+    #             end
+                
+    #             current = current.next_node
+    #             position += 1
+    #         end
+            
+    #         result
+    # end
+        
+
 end 
 
 
